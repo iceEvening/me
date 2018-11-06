@@ -1,0 +1,11 @@
+.DS_Store
+*.pb.go
+*.pb.gw.go
+!vendor/**/*.pb.go
+!vendor/**/*.pb.gw.go
+.idea
+.vscode
+*.swp
+*.exe
+*.log
+*.pbtxt
