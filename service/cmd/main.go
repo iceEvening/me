@@ -41,9 +41,8 @@ func setupRouter() *router.Router {
 	e := gin.Default()
 	e.Use(cors.New(cors.Config{
 		AllowOrigins: []string{
-			"http://localhost:8080",
-			"http://127.0.0.1:8080",
 			"http://www.sanghongwei.com",
+			"http://sanghongwei.com",
 		},
 		AllowCredentials: true,
 		AllowHeaders: []string{
@@ -86,7 +85,7 @@ func main() {
 	setConfig()
 	r := setupRouter()
 	serv := &http.Server{
-		Addr:         ":8081",
+		Addr:         ":8080",
 		Handler:      r.E,
 		ReadTimeout:  time.Second * 10,
 		WriteTimeout: time.Second * 10,
