@@ -100,6 +100,7 @@
 
 <script>
 import {mapActions} from "vuex"
+import { mapMutations } from 'vuex'
 
 var career = {
   id : '0',
@@ -156,12 +157,15 @@ export default {
       'GET_CAREERS',
       'GET_EDUCATIONS',
       'GET_EDUCATION',
+      'GET_USER_PROFILE_IMAGE',
+    ]),
+    ...mapMutations([
+      'UPDATE_PROFILE_TIME',
     ])
   },
 
   mounted() {
     this.GET_USER_PROFILE(this.$store.state.ownerID).then((res) => {
-      this.profile.img = 'data:image/jpeg;base64,' + res.data.img
       this.profile.nickname = res.data.nickname
       this.profile.me = res.data.me
       this.profile.name = res.data.name
@@ -170,6 +174,20 @@ export default {
       this.profile.birthday = new Date(res.data.birthday).toDateString()
       this.profile.hometown = res.data.hometown
       this.profile.city = res.data.city
+      if(this.$store.state.update != res.data.update) {
+        this.UPDATE_PROFILE_TIME(res.data.update)
+        this.GET_USER_PROFILE_IMAGE(this.$store.state.ownerID).then((res) => {
+          this.profile.img = 'data:image/jpeg;base64,' + res.data.img
+        }, (error) => {
+          this.$notify.error({
+            title: 'Load user profile img failed.',
+            message: error.response.data.msg,
+            position: "top-right"
+          })
+        })
+      } else {
+        this.profile.img = 'data:image/jpeg;base64,' + this.$store.state.ownImg
+      }
     }, (error) => {
       this.$notify.error({
         title: 'Load user profile failed.',

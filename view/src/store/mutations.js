@@ -4,6 +4,8 @@ import {
   SET_ACTIVE_INDEX_TO_ME,
   SIGN_IN,
   SIGN_OUT,
+  UPDATE_PROFILE_TIME,
+  UPDATE_OWNIMG_IMG
 } from './mutation-types'
 
 const mutations = {
@@ -17,6 +19,16 @@ const mutations = {
 
   [SIGN_UP] (state, user) {
     state.nickname = user.nickname
+  },
+
+  [UPDATE_PROFILE_TIME] (state, update) {
+    state.update = update
+    localStorage.update = update
+  },
+
+  [UPDATE_OWNIMG_IMG] (state, img) {
+    state.ownImg = img
+    localStorage.ownImg = img
   },
 
   [SIGN_IN] (state, data) {

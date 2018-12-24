@@ -8,6 +8,7 @@ Vue.use(Vuex)
 
 const state = {
   ownerID: 1,
+  ownImg: localStorage.ownImg || "",
   //active menu
   activeIndex: "",
   //user info
@@ -15,8 +16,9 @@ const state = {
   email: localStorage.email || "",
   nickname: localStorage.nickname || "",
   token: localStorage.token || "",
+  update: localStorage.update || "",
   //login check
-  notSignedIn: localStorage.notSignedIn || "true",
+  notSignedIn: localStorage.notSignedIn == "true",
   expired: localStorage.expired || "false",
   //article info
   articleHtml: "",

@@ -6,7 +6,6 @@ const actions = {
     url: 'signup',
     data: user
   }).then((res) => {
-    console.log(res)
     commit('SIGN_UP', user)
   }),
   
@@ -15,7 +14,6 @@ const actions = {
     url: 'signin',
     data: user
   }).then((res) => {
-    console.log(res)
     commit('SIGN_IN', res.data)
   }),
 
@@ -107,6 +105,13 @@ const actions = {
   GET_USER_PROFILE: ({commit}, id) => Ajax({
     method: 'get',
     url: 'user/profile/' + id,
+  }),
+
+  GET_USER_PROFILE_IMAGE: ({commit}, id) => Ajax({
+    method: 'get',
+    url: 'user/profileimg/' + id,
+  }).then((res) => {
+    commit('UPDATE_OWNIMG_IMG', res.data.img)
   }),
 
   ARTICLES: ({commit}, id) => Ajax({

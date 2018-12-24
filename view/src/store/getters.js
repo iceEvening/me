@@ -5,3 +5,4 @@ export const nickname = state => state.nickname
 export const token = state => state.token
 export const notSignedIn = state => state.notSignedIn
 export const articleHtml = state => state.articleHtml
+export const update = state => state.update

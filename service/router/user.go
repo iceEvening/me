@@ -21,6 +21,7 @@ func (r *Router) RegisterUserRouter() {
 	user.GET("careers/:id", r.getCareers)
 	user.GET("educations/:id", r.getEducations)
 	user.GET("profile/:id", r.getUser)
+	user.GET("profileimg/:id", r.getUserImg)
 	user.Use(jwt.JWTAuth())
 	{
 		user.GET("ping", func(c *gin.Context) {
@@ -417,7 +418,6 @@ func (r *Router) getUser(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
 			"status":   0,
 			"msg":      "get user profile success",
-			"img":      user.Img,
 			"me":       user.Me,
 			"nickname": user.Nickname,
 			"name":     user.Name,
@@ -426,6 +426,7 @@ func (r *Router) getUser(c *gin.Context) {
 			"birthday": user.Birthday,
 			"hometown": user.Hometown,
 			"city":     user.City,
+			"update":   user.UpdatedAt,
 		})
 	} else {
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -435,7 +436,36 @@ func (r *Router) getUser(c *gin.Context) {
 	}
 }
 
-//=============== Edit get profile finished ===============
+//=============== get profile finished ===============
+
+func (r *Router) getUserImg(c *gin.Context) {
+	if id := c.Param("id"); id != "" {
+		logrus.Debugln(id)
+		idInt := Atoi(c, id)
+		user, err := r.model.GetUser(uint(idInt))
+		if err != nil {
+			logrus.Errorf("get user profile img failed: %v", err)
+			c.JSON(http.StatusNotFound, gin.H{
+				"status": -1,
+				"msg":    fmt.Sprintf("failed to get user profile img: %v", err),
+			})
+			return
+		}
+
+		c.JSON(http.StatusOK, gin.H{
+			"status": 0,
+			"msg":    "get user profile img success",
+			"img":    user.Img,
+		})
+	} else {
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"status": -1,
+			"msg":    "invalid user id",
+		})
+	}
+}
+
+//=============== get profile finished ===============
 
 type editUserReq struct {
 	ID       string    `json:"id"`

@@ -3,3 +3,5 @@ export const SET_ACTIVE_INDEX_TO_ME = 'SET_ACTIVE_INDEX_TO_ME'
 export const SIGN_UP = "SIGN_UP"
 export const SIGN_IN = "SIGN_IN"
 export const SIGN_OUT = "SIGN_OUT"
+export const UPDATE_PROFILE_TIME = "UPDATE_PROFILE_TIME"
+export const UPDATE_OWNIMG_IMG = "UPDATE_OWNIMG_IMG"
