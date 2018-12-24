@@ -110,8 +110,6 @@ const actions = {
   GET_USER_PROFILE_IMAGE: ({commit}, id) => Ajax({
     method: 'get',
     url: 'user/profileimg/' + id,
-  }).then((res) => {
-    commit('UPDATE_OWNIMG_IMG', res.data.img)
   }),
 
   ARTICLES: ({commit}, id) => Ajax({

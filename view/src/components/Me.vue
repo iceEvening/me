@@ -161,6 +161,7 @@ export default {
     ]),
     ...mapMutations([
       'UPDATE_PROFILE_TIME',
+      'UPDATE_OWNIMG_IMG',
     ])
   },
 
@@ -177,6 +178,7 @@ export default {
       if(this.$store.state.update != res.data.update) {
         this.UPDATE_PROFILE_TIME(res.data.update)
         this.GET_USER_PROFILE_IMAGE(this.$store.state.ownerID).then((res) => {
+          this.UPDATE_OWNIMG_IMG(res.data.img)
           this.profile.img = 'data:image/jpeg;base64,' + res.data.img
         }, (error) => {
           this.$notify.error({
