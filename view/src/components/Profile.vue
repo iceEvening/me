@@ -179,6 +179,7 @@ export default {
     ...mapActions([
       'GET_USER_PROFILE',
       'EDIT_USER_PROFILE',
+      'GET_USER_PROFILE_IMAGE',
     ])
   },
 
@@ -186,7 +187,6 @@ export default {
     this.headers["X-USER-TOKEN"] = this.$store.state.token
     this.form.id = this.$store.state.user_id.toString()
     this.GET_USER_PROFILE(this.$store.state.user_id.toString()).then((res) => {
-      this.imgDataUrl = 'data:image/jpeg;base64,' + res.data.img
       this.form.nickname = res.data.nickname
       this.form.me = res.data.me
       this.form.name = res.data.name
@@ -198,6 +198,15 @@ export default {
     }, (error) => {
       this.$notify.error({
         title: 'Load user profile failed.',
+        message: error.response.data.msg,
+        position: "top-right"
+      })
+    }),
+    this.GET_USER_PROFILE_IMAGE(this.$store.state.ownerID).then((res) => {
+      this.imgDataUrl = 'data:image/jpeg;base64,' + res.data.img
+    }, (error) => {
+      this.$notify.error({
+        title: 'Load user profile img failed.',
         message: error.response.data.msg,
         position: "top-right"
       })
