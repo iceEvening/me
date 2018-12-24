@@ -3,7 +3,7 @@ import store from './store'
 
 axios.interceptors.request.use(
   config => {
-    config.baseURL = 'http://localhost:8081/'
+    config.baseURL = 'http://www.sanghongwei:8081/'
     config.timeout = 1800000
     config.headers = {
       'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
