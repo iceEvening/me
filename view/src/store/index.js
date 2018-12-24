@@ -20,6 +20,8 @@ const state = {
   expired: localStorage.expired || "false",
   //article info
   articleHtml: "",
+
+  openSignup: false,
 }
   
 export default new Vuex.Store({
