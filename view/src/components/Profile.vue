@@ -59,7 +59,7 @@
         v-model="show"
         :width="300"
         :height="400"
-        url="http://localhost:8081/user/image"
+        url="http://www.sanghongwei.com:8080/user/image"
         :params="form"
         :headers="headers"
         :noCircle=true

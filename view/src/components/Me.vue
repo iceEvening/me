@@ -1,32 +1,32 @@
 <template>
   <div class="me">
     <el-row style="padding: 40px 0;">
-      <el-col :span="18" :offset="3">
+      <el-col :span="22" :offset="1">
         <el-row>
-          <el-col :span="8">
+          <el-col :span="7">
             <el-row>
               <el-col :span="24">
                 <img :src="profile.img" style="margin-bottom: 20px">
               </el-col>
             </el-row>
             <el-row>
-              <el-col :span="24">
+              <el-col :span="24" style="word-wrap:break-word;">
                 Hello, I'm <b>{{ profile.name }}</b>
                 <i v-if="profile.gender === '1'" class="el-icon-ali-male_icon" style="margin-left:3px;"></i>
-                <i v-if="profile.gender === '2'" class="el-icon-ali-female_icon" style="margin-left:3px;"></i> <br>
-                I was born in {{ profile.hometown}} <br>
-                on {{ profile.birthday }} <br>
-                I'm working and living in <b>{{ profile.city }}</b> now <br>
+                <i v-if="profile.gender === '2'" class="el-icon-ali-female_icon" style="margin-left:3px;"></i>.<br>
+                I was born in {{ profile.hometown}}<br>
+                on {{ profile.birthday }}.<br>
+                I'm working and living in <b>{{ profile.city }}</b> now.<br>
                 You can contact me through this email: <br>
                 <i class="el-icon-message"></i> {{ profile.email }}
               </el-col>
             </el-row>
           </el-col>
-          <el-col :span="16" style="text-align: left; padding:0 10px;">
+          <el-col :span="17" style="text-align: left; padding:0 10px;">
             <el-row style="height:150px;">
               <el-col :span="24">
-                Me:<br>
-                {{ profile.me }}
+                <b>Me:</b><br>
+                <div v-html="profile.me" style="border-bottom: 1px solid #e6e6e6; margin-bottom:30px; padding-bottom: 20px;">
               </el-col>
             </el-row>
             <el-row style="margin:30px 0;">
@@ -41,15 +41,18 @@
                   </el-table-column>
                   <el-table-column
                     prop="department"
-                    label="Department">
+                    label="Department"
+                    min-width="85px">
                   </el-table-column>
                   <el-table-column
                     prop="post"
-                    label="Post">
+                    label="Post"
+                    min-width="105px">
                   </el-table-column>
                   <el-table-column
                     prop="description"
-                    label="Desc">
+                    label="Desc"
+                    min-width="300px">
                   </el-table-column>
                   <el-table-column
                     prop="start"
@@ -82,11 +85,13 @@
                   </el-table-column>
                   <el-table-column
                     prop="start"
-                    label="Start time">
+                    label="Start time"
+                    width="75px">
                   </el-table-column>
                   <el-table-column
                     prop="end"
-                    label="End time">
+                    label="End time"
+                    width="75px">
                   </el-table-column>
                 </el-table>
               </el-col>
@@ -277,5 +282,11 @@ li {
 }
 a {
   color: #42b983;
+}
+img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
 }
 </style>

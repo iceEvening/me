@@ -23,7 +23,7 @@ const state = {
   //article info
   articleHtml: "",
 
-  openSignup: false,
+  openSignup: true,
 }
   
 export default new Vuex.Store({

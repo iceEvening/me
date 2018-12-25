@@ -6,7 +6,7 @@
           <el-menu-item index="/me">me</el-menu-item>
           <el-menu-item index="/articles">articles</el-menu-item>
           <el-menu-item v-show="notSignedIn" class="menu-right" index="/signin">sign in</el-menu-item>
-          <el-menu-item v-show="notSignedIn && openSignup" class="menu-right" index="/signup">sign up</el-menu-item>
+          <el-menu-item v-show="false" class="menu-right" index="/signup">sign up</el-menu-item>
           <el-submenu class="menu-right" v-show="!notSignedIn" :show-timeout="1" :hide-timeout="1" index="#">
             <template slot="title">{{ nickname }}</template>
             <el-menu-item class="subMenuItem" index="/profile">profile</el-menu-item>
