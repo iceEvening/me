@@ -31,7 +31,7 @@
             </el-row>
             <el-row style="margin:30px 0;">
               <el-col :span="24">
-                Below is my work experience: <br>
+                Here is my work experience: <br>
                 <el-table
                   :data="careers.list"
                   style="width: 100%">
@@ -67,7 +67,7 @@
             </el-row>
             <el-row style="margin:30px 0;">
               <el-col :span="24">
-                Below is my education experience: <br>
+                Here is my education experience: <br>
                 <el-table
                   :data="educations.list"
                   style="width: 100%">
@@ -215,8 +215,8 @@ export default {
           c.post = eachCareer.Post
           c.rank = eachCareer.JobLevel
           c.description = eachCareer.JobDesc
-          c.start = new Date(eachCareer.StartTime).getFullYear() + '/' + new Date(eachCareer.StartTime).getMonth()
-          c.end = new Date(eachCareer.EndTime).getFullYear() + '/' + new Date(eachCareer.EndTime).getMonth()
+          c.start = new Date(eachCareer.StartTime).getFullYear() + '/' + (new Date(eachCareer.StartTime).getMonth() + 1)
+          c.end = new Date(eachCareer.EndTime).getFullYear() + '/' + (new Date(eachCareer.EndTime).getMonth() + 1)
           c.isCurrent = eachCareer.IsCurrent
           if (eachCareer.IsCurrent) {
             c.end = 'now'
@@ -245,8 +245,8 @@ export default {
           e.school = eachEducation.School
           e.major = eachEducation.Major
           e.degree = eachEducation.Degree
-          e.start = new Date(eachEducation.StartTime).getFullYear() + '/' + new Date(eachEducation.StartTime).getMonth()
-          e.end = new Date(eachEducation.EndTime).getFullYear() + '/' + new Date(eachEducation.EndTime).getMonth()
+          e.start = new Date(eachEducation.StartTime).getFullYear() + '/' + (new Date(eachEducation.StartTime).getMonth() + 1)
+          e.end = new Date(eachEducation.EndTime).getFullYear() + '/' + (new Date(eachEducation.EndTime).getMonth() + 1)
           if (eachEducation.IsCurrent) {
             e.end = 'now'
           }
